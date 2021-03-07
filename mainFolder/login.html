@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Marine Coms</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="google-signin-client_id"
+        content="405590579130-5da17mlbohcgd7oc0o7tjih62mqg1pde.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<style>
+    table, td {
+      border: 1px solid white;
+    }
+    </style>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+            <div class="nav-title">
+                Marine Coms
+            </div>
+        </div>
+        <div class="nav-btn">
+            <label for="nav-check">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Log In</a>
+        </div>
+    </div>
+    <!-- particles.js container -->
+    <div id="particles-js" style="z-index: 0;"></div>
+    <div class="orangeBox" id="enterd" style="display: none;">
+        <input id="des" type="text" style="width: 50%; height: 10%; color: white" placeholder="Write as much as you can to describe yourself!">
+        <button onclick="enterC()">Enter</button>
+    </div>
+    <div id="bigbox" class="orangeBox" style="text-align: center;">
+        <div style="width: 300px; margin-left: auto; margin-right: auto; padding-top: 20px;">
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-margin-left="auto"
+                data-margin-right:="auto" data-longtitle="true" data-width="500px"></div>
+        </div>
+    </div>
+    <div id="startOne" class="orangeBox" style="display: none;">
+        <button onclick="startDoing()">Start Discovering!</button>
+    </div>
+    <div id="checkIt" class="orangeBox" style="display: none;">
+    </div>
+    <img id="mainimg" class = "orangeBox" style ="display: none; width: 20%; height: auto; margin-right: 0px;">
+    <h1 id = "description" style = "display: none; margin-top: 10%;" class = "orangeBox"></h1>
+    <h1 id = "name" class = "orangeBox" style="display: none;"></h1>
+    <div id="startTwo" class="orangeBox" style="display: none;">
+        <button onclick="startDoingAgain()">Press the button to continue</button>
+    </div>
+
+    <!-- match buttons -->
+    <input onclick = "yesClick()" id = "yesbutton" type="button" value="✓" class = "orangeBox" style = "width: 10%; height: 10%; background-color: rgba(0, 0, 0, 0); color:green; font-size:100px; border: none; display: none; margin-right: 1500px; margin-bottom: 600px;">
+    <input onclick = "noClick()" id= "nobutton" type="button" value="x" class = "orangeBox" style = "width: 10%; height: 10%; background-color: rgba(0, 0, 0, 0); color:rgb(237, 8, 50); font-size:100px; border: none; display: none; margin-right: 1500px; margin-bottom: 400px;">
+    <button onclick = "matchDis()" id = "matchbutton" class = "orangeBox"style = "display: none; margin-left: 0px; margin-top: 100px; width: 200px; height: 100px; background-color: rgba(50, 50, 50, 100)">See Matched</button>
+
+    <table id="myTable" class = "orangeBox" style = "display: none;">
+
+    </table>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- scripts -->
+    <script src="../particles.js"></script>
+    <script src="js/app.js"></script>
+    <!-- stats.js -->
+    <script src="js/lib/stats.js"></script>
+
+    <!-- bootstrap imports -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <script id="main">
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+        var user;
+        var data;
+        var liAr = [];
+        var index = 0;
+        var firebaseConfig = {
+            apiKey: "AIzaSyC-phtzFiFnZ8MFOAGSGUUR8j5Sbvj2uXg",
+            authDomain: "marinec-306819.firebaseapp.com",
+            projectId: "marinec-306819",
+            storageBucket: "marinec-306819.appspot.com",
+            messagingSenderId: "405590579130",
+            appId: "1:405590579130:web:6326aa64e8c400432f2f83",
+            measurementId: "G-H96L537610"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        function onSignIn(googleUser) {
+            document.getElementById("bigbox").style.display = 'none';
+            document.getElementById("enterd").style.display = 'block';
+            user = googleUser.getBasicProfile()
+            console.log(googleUser.getBasicProfile().getEmail());
+            firebase.database().ref(googleUser.getBasicProfile().getId()).set({
+                USERNAME: googleUser.getBasicProfile().getName(),
+                IMAGE: googleUser.getBasicProfile().getImageUrl(),
+                ID: googleUser.getBasicProfile().getId(),
+                Email: googleUser.getBasicProfile().getEmail()
+            });
+        }
+        function enterC() {
+            var valueDes = document.getElementById("des").value;
+            document.getElementById("enterd").style.display = 'none';
+            document.getElementById("startOne").style.display = 'block'
+            firebase.database().ref(user.getId()).set({
+                USERNAME: user.getName(),
+                IMAGE: user.getImageUrl(),
+                Des: valueDes,
+                ID: user.getId(),
+                Email: user.getEmail()
+            });
+        }
+
+        function initAr() {
+            var leadsRef = firebase.database().ref('/');
+            leadsRef.on('value', function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    var childData = childSnapshot.val();
+                    liAr.push(childData);
+                });
+            });
+        }
+
+        function startDoing() {
+            document.getElementById("startOne").style.display = 'none';
+            document.getElementById("checkIt").style.display = 'block';
+            document.getElementById("startTwo").style.display = 'block';
+            initAr();
+        }
+        function startDoingAgain() {
+            document.getElementById("startTwo").style.display = 'none';
+            if (index >= liAr.length) {
+                matchDis();
+            } else {
+                console.log(liAr[0])
+                var person = liAr[index]
+                document.getElementById("matchbutton").style.display = 'block';
+                document.getElementById("yesbutton").style.display = 'block';
+                document.getElementById("nobutton").style.display = 'block'; 
+                document.getElementById("startTwo").style.display = 'none';
+                document.getElementById("mainimg").style.display = 'block';
+                document.getElementById("name").style.display = 'block';
+                document.getElementById("mainimg").src = person["IMAGE"];
+                document.getElementById("description").style.display = 'block';
+                // document.getElementById("description").innerHTML = "Description: ".concat(person["Des"]);
+                document.getElementById("name").innerText = "Name: ".concat(person["USERNAME"]).concat("\n ".concat("Description: ".concat(person["Des"])));
+                index++;
+            }
+        }
+        function yesClick(){
+            var person = liAr[index - 1];
+            startDoingAgain()
+            console.log(person);
+            firebase.database().ref(user.getId() + "/connected/" + person["ID"]).set({
+                Name: person["USERNAME"],
+                Email: person["Email"]
+            });
+        }
+        function noClick(){
+            startDoingAgain();
+        }
+        function matchDis(){
+            document.getElementById("matchbutton").style.display = 'none';
+            document.getElementById("yesbutton").style.display = 'none';
+            document.getElementById("nobutton").style.display = 'none'; 
+            document.getElementById("startTwo").style.display = 'none';
+            document.getElementById("mainimg").style.display = 'none';
+            document.getElementById("name").style.display = 'none';
+            document.getElementById("myTable").style.display = 'block';
+            var table = document.getElementById("myTable");
+            console.log(user.getId() + '/connected')
+            var leadsRef = firebase.database().ref(user.getId() + '/connected');
+            leadsRef.on('value', function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    var getVal = childSnapshot.val();
+                    var row = table.insertRow(0);
+                    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    // Add some text to the new cells:
+                    cell1.innerHTML = getVal["Name"];
+                    cell2.innerHTML = getVal["Email"];
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

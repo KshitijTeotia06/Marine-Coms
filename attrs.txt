@@ -1,0 +1,19 @@
+attrs = {
+    'household_info': {
+        'children': [{
+            'age': int,
+            'grade': int,
+            'gender': ('male', 'female', 'other')
+        }],
+        'income': range,
+    },
+    'location': tuple,
+    'gender': ('male', 'female', 'other'),
+    'spouse': {
+        'branch': ('Army', 'Marine Corps', 'Navy', 'Air Force', 'Space Force', 'Coast Guard'),
+        'gender': ('male', 'female', 'other'),
+        'ethnicity': ('American Indian/Alaskan Native', 'Asian or Pacific Islander', 'Black', 'White', 'Hispanic')
+    },
+    'ethnicity': ('American Indian/Alaskan Native', 'Asian or Pacific Islander', 'Black', 'White', 'Hispanic'),
+    'about_me': str
+}
